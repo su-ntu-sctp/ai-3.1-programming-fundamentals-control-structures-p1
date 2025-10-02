@@ -1,52 +1,66 @@
-# Lesson Title
-Instructions: Replace the placeholders below and delete instruction lines before publishing.
 
-## Lesson Overview
-- **Briefing:** [1–2 sentences on what this lesson is about and why it matters]
-- **Module.Lesson:** [e.g., 3.2]
-- **Duration:** [e.g., 60–90 min]
-- **Prerequisites:** [short list]
+# Introduction To Java
 
 ## Lesson Objectives
-Write 2–4 measurable outcomes using action verbs (Apply, Build, Integrate).
-- [objective 1]
-- [objective 2]
-- [objective 3]
 
-## Topics & Activities
-Duplicate the block below for each topic. Keep it concise.
+  1. Become familiar with Java and its key terminology, including JDK, JVM, and JRE.
 
-### Topic 1 — [topic name]
-**Sections**
-- [section 1]
-- [section 2]
-- [section 3]
+  2. Understand the the relationship and differences between JDK, JRE, and JVM.
 
-#### Hands-on / Lab (Activity)
-- [brief activity task or link to starter code]
+  3. Write and execute simple Java code snippets directly in JShell 
 
-### Topic 2 — [topic name]
-**Sections**
-- [section 1]
-- [section 2]
 
-#### Hands-on / Lab (Activity)
-- [brief activity task or link to starter code]
+## About Java
 
-### Topic 3 — [topic name]
-**Sections**
-- [section 1]
-- [section 2]
+Java is a versatile, object-oriented programming language known for its "write once, run anywhere" capability. This means that Java code can run on any platform that supports the Java Virtual Machine (JVM), making it highly portable. It is widely used in web development, mobile applications, enterprise software, and large-scale systems due to its stability, security features, and extensive library support.
 
-#### Hands-on / Lab (Activity)
-- [brief activity task or link to starter code]
+## Key Reasons for Using Java:
+- Platform Independence: Java applications can run on any device with a JVM, enhancing portability.
 
-## Summary
-State 2–3 key takeaways.
-- [takeaway 1]
-- [takeaway 2]
+- Object-Oriented: Promotes modular, maintainable, and reusable code with principles like encapsulation and inheritance.
 
-## (Optional) Resources
-2–4 high-quality links (docs, guides, videos).
-- [link 1]
-- [link 2]
+- Robust and Secure: Java includes memory management, error handling, and security features, making it ideal for large applications.
+
+- Rich Ecosystem: A vast standard library (Java Standard Library) and frameworks like Spring and Hibernate support diverse development needs.
+
+- Scalability: Ideal for both small-scale applications and large, distributed systems.
+
+
+## Java Terminology
+
+- Java Development Kit (JDK) - to write code.
+- Java Runtime Environment (JRE) - to run code.
+- JVM is a virtual machine that runs Java bytecode. It is the engine that executes Java programs.
+
+
+<img src="jdk.png" width="450">
+
+
+ The JVM (Java Virtual Machine) is the core part of Java, responsible for executing Java programs. It takes the compiled bytecode and translates it into machine code for the underlying operating system. The JRE (Java Runtime Environment) includes the JVM and the libraries necessary to run Java applications, but it does not provide development tools. The JDK (Java Development Kit), on the other hand, includes the JRE along with additional tools like compilers and debuggers, making it necessary for developing Java applications. In short, JVM runs the program, JRE runs pre-compiled programs, and JDK is used to develop and compile Java code.
+ When you install JDK, JRE is part of it.
+
+#### <a href="https://www.digitalocean.com/community/tutorials/difference-jdk-vs-jre-vs-jvm" target="_blank">Click here to learn more on jdk vs jre vs jvm</a>.
+
+## Installation Check
+
+From this point onwards we will start coding in Java using VSCode editor. So kindly ensure that you have gone through the welcome module and completed all the installations successfully including JDK, VSCode editor and extension pack for java in VSCode.
+
+## JShell
+
+Jshell is a REPL (Read-Eval-Print-Loop) tool that allows you to execute Java code in an interactive manner. This is useful for testing out simple Java code without having to create a Java project.
+
+Start jshell in your terminal:
+
+```bash
+$ jshell
+```
+
+Try your first Java code:
+
+```bash
+jshell> System.out.println("Hello World");
+Hello World
+jshell> /exit
+```
+
+
