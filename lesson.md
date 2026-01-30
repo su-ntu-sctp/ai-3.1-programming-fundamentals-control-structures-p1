@@ -7,7 +7,7 @@
 - **Prerequisites:** Basic programming concepts, VS Code installed  
 
 ## Lesson Objectives
-By the end of this lesson, the students will be able to:  
+By the end of the lesson, the students will be able to:  
 - Install and configure JDK, SDKMan, and Java extensions in VS Code.  
 - Write and execute a Java program using the `class` and `main` method.  
 - Apply variables, data types, casting, and wrapper classes in code.  
