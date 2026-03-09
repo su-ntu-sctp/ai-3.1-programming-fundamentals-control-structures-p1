@@ -556,6 +556,25 @@ int unboxedNum = boxedNum;  // Integer is automatically unboxed to int
 
 ---
 
+### 👨‍💻 Activity: Explore Wrapper Classes
+
+Create a new file `WrapperClassesPractice.java` and try the following:
+
+1. Print the maximum and minimum values of `Integer`, `Double`, and `Long`
+2. Parse the string `"false"` into a boolean and print it
+3. Assign an `Integer` object the value `42`, then unbox it into a plain `int` and print both
+
+**Example structure:**
+```java
+public class WrapperClassesPractice {
+  public static void main(String[] args) {
+    System.out.println("Int max: " + Integer.MAX_VALUE);
+    System.out.println("Int min: " + Integer.MIN_VALUE);
+    // Add the rest here
+  }
+}
+```
+
 ## Part 6: Reading User Input (15 minutes)
 
 There are a few ways to read a user's input. We will be using the `Scanner` class.
@@ -862,8 +881,11 @@ To configure Java code formatting in VS Code:
 
 ### Shortcuts
 
-- Type `sout` and press Tab to generate `System.out.println()`
-- Type `psvm` and press Tab to generate `public static void main(String[] args)`
+- Type `sysout` and press **Tab** to generate `System.out.println()`
+
+- Press **Shift+Alt+F** (Windows) / **Shift+Option+F** (Mac) to format the document
+
+- Press **Ctrl+Space** (Windows/Mac) to trigger code suggestions
 
 ---
 
