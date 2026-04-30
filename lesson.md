@@ -1,11 +1,5 @@
 # Lesson 3.1: Programming Fundamentals and Control Structures
 
-**Module:** 3.1  
-**Duration:** 180 minutes (3 hours)  
-**Level:** Beginner
-
----
-
 ## Lesson Overview
 
 This lesson introduces the Java development environment and essential programming basics. Students will set up JDK, learn about classes, compilation, variables, data types, wrapper classes, user input, and operators. By the end, they will be able to write, compile, and execute simple Java programs in VS Code.
