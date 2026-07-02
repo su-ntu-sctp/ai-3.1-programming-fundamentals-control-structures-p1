@@ -661,6 +661,27 @@ int order2 = (10 + 5) * 2;  // 30 (parentheses first)
 
 ---
 
+## 👨‍💻 Activity: Operators in Action
+
+Create `LearnOperators.java` and complete the following:
+
+1. Declare `int score = 10`
+2. Use **post-increment** to print score, then print it again to confirm it incremented
+3. Use **pre-increment** and print — observe the difference from post-increment
+4. Use a **compound assignment** to add 5 to score in one line and print the result
+5. Use a **ternary operator** to check if the final score is above 20 — print `"High Score"` or `"Keep Going"`
+
+**Expected Output:**
+
+10
+11
+12
+After += 5: 17
+Keep Going
+
+**Bonus (if you finish early):** Change the initial value of `score` to `18` and predict 
+the output before running — then verify.
+
 ## Part 8: Code Formatting (5 minutes)
 
 To format Java code in VS Code:
