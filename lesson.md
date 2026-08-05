@@ -2,7 +2,7 @@
 
 ## Lesson Overview
 
-This lesson introduces the Java development environment and essential programming basics. Students will set up JDK, learn about classes, compilation, variables, data types, wrapper classes, user input, and operators. By the end, they will be able to write, compile, and execute simple Java programs in VS Code.
+This lesson introduces the Java development environment and essential programming basics. Students will learn about classes, compilation, variables, data types, wrapper classes, user input, and operators. By the end, they will be able to write, compile, and execute simple Java programs in VS Code.
 
 ---
 
@@ -10,14 +10,13 @@ This lesson introduces the Java development environment and essential programmin
 
 - Basic programming concepts
 - VS Code installed
-- Internet connection for installations
+- Completed `setup.md` beforehand (WSL, JDK 21, Maven, SDKMan, and VS Code Java extensions installed and verified)
 
 ---
 
 ## Lesson Objectives
 
 By the end of this lesson, you will be able to:
-- Install and configure WSL (Windows users), JDK, SDKMan, Maven, and Java extensions in VS Code
 - Write and execute a Java program using the `class` and `main` method
 - Apply variables, data types, casting, and wrapper classes in code
 - Read and process user input from the console
@@ -25,52 +24,7 @@ By the end of this lesson, you will be able to:
 
 ---
 
-## Part 1: Installation of Development Environment (45 minutes)
-
-### For Windows Users: Install WSL2
-
-Windows users need to install WSL2 (Windows Subsystem for Linux) to follow this course.
-
-**Step 1: Open PowerShell as Administrator**
-
-Right-click Start menu → Windows PowerShell (Admin)
-
-**Step 2: Install WSL**
-
-```powershell
-wsl --install
-```
-
-**Step 3: Restart your computer**
-
-**Step 4: Set up Ubuntu**
-
-After restart, Ubuntu will open automatically. Create a username and password.
-
-**Step 5: Update packages**
-
-```bash
-sudo apt update && sudo apt upgrade -y
-```
-
-**Reference:** https://learn.microsoft.com/en-us/windows/wsl/install
-
----
-
-### For Windows Users: Git Setup in WSL
-
-Configure Git in your WSL environment:
-
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-```
-
-**Reference:** https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git
-
----
-
-### Terminology
+## Terminology
 
 **Java Development Kit (JDK)** - Toolkit which includes the Java compiler and runtime environment for developers to write code
 
@@ -84,131 +38,31 @@ When you install JDK, JRE is included.
 
 ---
 
-### Install SDKMan
-
-SDKMan is a popular command line tool for managing multiple JDK versions on Unix-based systems (Linux and Mac).
-
-**Benefits:**
-- Install, manage and switch between multiple JDK versions easily
-- JDKs are installed locally, avoiding conflicts with system-wide installations
-- Update itself and all SDKs with a single command
-
-**Step 1: Install prerequisites (WSL/Ubuntu users only)**
-
-```bash
-sudo apt install zip unzip curl -y
-```
-
-**Mac users:** Skip this step (curl is pre-installed)
-
-**Step 2: Install SDKMan**
-
-```bash
-curl -s "https://get.sdkman.io" | bash
-```
-
-**Step 3: Initialize SDKMan**
-
-```bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-```
-
-**Step 4: Verify installation**
-
-```bash
-sdk version
-```
-
-You should see `SDKMAN!` followed by script and native version numbers.
-
----
-
-### Install JDK 21
-
-We will install **Eclipse Temurin JDK 21** — the current **LTS** release with long-term support until 2031.
-
-**Step 1: List available Java SDKs**
-
-```bash
-sdk list java
-```
-
-**Step 2: Install Java 21**
-
-```bash
-sdk install java 21-tem
-```
-
-This always installs the latest patch of Java 21. To install a specific patch version, use the exact identifier from the list, e.g. `sdk install java 21.0.7-tem`.
-
-**Step 3: Verify installation**
-
-```bash
-java -version
-```
-
-You should see `OpenJDK 21.x.x` — the exact patch number may differ.
-
-**Java SE Support Roadmap:** https://www.oracle.com/java/technologies/java-se-support-roadmap.html
-
----
-
-### Install Maven
-
-Maven is a build automation tool used for Java projects.
-
-**For WSL/Ubuntu users:**
-
-```bash
-sudo apt update
-sudo apt install maven -y
-```
-
-**For Mac users:**
-
-```bash
-brew install maven
-```
-
-**Verify installation:**
-
-```bash
-mvn --version
-```
-
-You should see `Apache Maven 3.x.x` with Java 21 listed.
-
----
-
-### JShell
-
-JShell is a REPL (Read-Eval-Print-Loop) tool for executing Java code interactively — useful for quickly testing snippets without creating a project.
-
-```bash
-jshell
-```
-
-```bash
-jshell> System.out.println("Hello World");
-Hello World
-jshell> /exit
-```
-
----
-
-### Install Extension Pack for Java
-
-**Step 1:** Open VS Code
-
-**Step 2:** Click Extensions icon (Ctrl+Shift+X / Cmd+Shift+X)
-
-**Step 3:** Search for "Extension Pack for Java" and click Install
-
-**Link:** https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack
-
----
-
 ## Part 2: `class` and `main` Method (10 minutes)
+
+### Class and Object — A Quick Preview
+
+You'll hear the words **class** and **object** constantly from here on, so before writing any code, a quick anchor:
+
+- A **class** is a blueprint — it defines what something looks like and what it can do.
+- An **object** is a real instance built from that blueprint, created using the `new` keyword.
+
+```java
+public class Car {
+  void drive() {
+    System.out.println("Car is driving");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Car myCar = new Car();   // creating an object from the Car class
+    myCar.drive();
+  }
+}
+```
+
+`Car` is the **class** — the blueprint. `myCar` is the **object** — a real instance created from it. That's all you need for now — we'll go much deeper into classes and objects (constructors, fields, and more) in Lesson 3.6 (Object-Oriented Programming).
 
 ### Step 1: Create `Main.java`
 
@@ -697,13 +551,12 @@ To format Java code in VS Code:
 
 ### What You Accomplished Today
 
-1. ✅ Installed WSL (Windows users), JDK 21, Maven, and VS Code Java extensions
-2. ✅ Learned about classes and the main method
-3. ✅ Compiled and ran Java programs
-4. ✅ Worked with variables, data types, and casting
-5. ✅ Used wrapper classes, boxing, and unboxing
-6. ✅ Read user input using Scanner
-7. ✅ Applied various operators in Java programs
+1. ✅ Learned about classes and the main method
+2. ✅ Compiled and ran Java programs
+3. ✅ Worked with variables, data types, and casting
+4. ✅ Used wrapper classes, boxing, and unboxing
+5. ✅ Read user input using Scanner
+6. ✅ Applied various operators in Java programs
 
 ### Key Takeaways
 
@@ -718,34 +571,7 @@ To format Java code in VS Code:
 
 ## Troubleshooting Guide
 
-### Issue 1: `sdk` command not found
-
-```bash
-source "$HOME/.sdkman/bin/sdkman-init.sh"
-```
-
-Or restart your terminal.
-
----
-
-### Issue 2: Permission denied when installing packages (WSL)
-
-```bash
-sudo apt install maven -y
-```
-
----
-
-### Issue 3: Java version mismatch
-
-```bash
-sdk current java
-sdk use java 21-tem
-```
-
----
-
-### Issue 4: Scanner not found error
+### Issue: Scanner not found error
 
 Add the import at the top of your file:
 ```java
@@ -758,7 +584,6 @@ import java.util.Scanner;
 
 - [Java Tutorials - Oracle](https://docs.oracle.com/javase/tutorial/)
 - [Java SE 21 Documentation](https://docs.oracle.com/en/java/javase/21/)
-- [SDKMan Documentation](https://sdkman.io/)
 
 ---
 

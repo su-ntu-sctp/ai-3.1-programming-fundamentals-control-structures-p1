@@ -2,9 +2,17 @@
 
 **⏳ Estimated Prep Time:** 60–80 minutes
 
-Welcome to our flipped-classroom session, where you'll review foundational concepts beforehand to maximize our time for hands-on coding and debugging. This pre-study focuses on the essential building blocks of Java programming: **Setting Up Your Environment**, **Variables & Data Types**, and **Operators**.
+Welcome to our flipped-classroom session, where you'll review foundational concepts beforehand to maximize our time for hands-on coding and debugging. This pre-study focuses on the essential building blocks of Java programming: **Variables & Data Types** and **Operators**, along with a conceptual review of your development environment.
 
 By mastering these concepts now, you will be better equipped to write, compile, and run your first Java programs confidently during our live session.
+
+---
+
+## ⚠️ Before You Begin: Installation
+
+**All installation and environment setup (WSL2, JDK 21, SDKMan, Maven, VS Code extensions) is covered in `setup.md`, not here.**
+
+Please complete every step in `setup.md`, including the Final Verification Checklist, before starting Task 1 below.
 
 ---
 
@@ -14,24 +22,13 @@ Please complete the following activities before our session.
 
 ---
 
-### 📝 Task 1: Setting Up Java & Your First Program (20 Minutes)
+### 📝 Task 1: Your First Program — Concepts (20 Minutes)
 
 **Activity:**
 
-Review the following official documentation:
-- [Install WSL2 on Windows](https://learn.microsoft.com/en-us/windows/wsl/install)
-- [Install SDKMan](https://sdkman.io/)
-- [Java SE Support Roadmap - Why JDK 21 LTS](https://www.oracle.com/java/technologies/java-se-support-roadmap.html)
-
-Also watch the video titled [**"How to Install WSL2 on Windows"**](https://www.youtube.com/watch?v=eId6K8d0v6o).
-
-[![video](https://img.youtube.com/vi/eId6K8d0v6o/default.jpg)](https://www.youtube.com/watch?v=eId6K8d0v6o)
-
 Review the following sections from the [`lesson.md`](./lesson.md) file:
-- **Installing WSL2** (Windows users)
-- **Installing SDKMan**
-- **Installing Eclipse Temurin JDK 21**
-- **Installing Maven**
+- **Terminology** (JDK, JRE, JVM)
+- **Class and Object — A Quick Preview**
 - **The `class` and `main` method**
 - **Compiling and running a Java program**
 
@@ -39,6 +36,7 @@ Pay close attention to the relationship between the JDK, JRE, and JVM, and how a
 
 **Guiding Questions:**
 * **JDK vs JRE vs JVM:** What is the difference between the three? Which one do you need to write and run Java code?
+* **Class vs Object:** What is a class? What is an object? How does `new` relate to the two?
 * **SDKMan:** Why is it useful to manage multiple JDK versions on the same machine?
 * **Temurin JDK 21:** Why are we using JDK 21 specifically? What does LTS mean?
 * **Compilation:** What does the `javac` command do, and what file does it produce?
@@ -126,8 +124,7 @@ To deepen your retention, try one of the following while you review:
 - [GeeksforGeeks - Java Wrapper Classes](https://www.geeksforgeeks.org/wrapper-classes-java/)
 
 **Environment Setup:**
-- [SDKMan Documentation](https://sdkman.io/)
-- [Java SE Support Roadmap](https://www.oracle.com/java/technologies/java-se-support-roadmap.html)
+- See `setup.md` for all installation references and documentation links.
 
 ---
 
