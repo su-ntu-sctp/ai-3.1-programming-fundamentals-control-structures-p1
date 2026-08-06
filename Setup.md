@@ -24,6 +24,8 @@ Windows users need to install WSL2 (Windows Subsystem for Linux) to follow this 
 
 Right-click Start menu → Windows PowerShell (Admin)
 
+*(On newer Windows 11 systems, you may see "Terminal (Admin)" instead — click that; it opens PowerShell by default.)*
+
 **Step 2: Install WSL**
 
 ```powershell
@@ -35,6 +37,8 @@ wsl --install
 **Step 4: Set up Ubuntu**
 
 After restart, Ubuntu will open automatically. Create a username and password.
+
+*(Your terminal may first show a path like `/mnt/c/Users/...` — that's normal and harmless; you'll move to your Linux home folder in the next section.)*
 
 **Step 5: Update packages**
 
@@ -194,21 +198,15 @@ You should see `SDKMAN!` followed by script and native version numbers.
 
 We will install **Eclipse Temurin JDK 21** — the current **LTS** release with long-term support until 2031.
 
-**Step 1: List available Java SDKs (For WSL/Ubuntu and Mac users)**
-
-```bash
-sdk list java
-```
-
-**Step 2: Install Java 21 (For WSL/Ubuntu and Mac users)**
+**Step 1: Install Java 21 (For WSL/Ubuntu and Mac users)**
 
 ```bash
 sdk install java 21-tem
 ```
 
-This always installs the latest patch of Java 21. To install a specific patch version, use the exact identifier from the list, e.g. `sdk install java 21.0.7-tem`.
+This always installs the latest patch of Java 21. To install a specific patch version, find the exact identifier using `sdk list java` (see Troubleshooting Guide), e.g. `sdk install java 21.0.7-tem`.
 
-**Step 3: Verify installation (For WSL/Ubuntu and Mac users)**
+**Step 2: Verify installation (For WSL/Ubuntu and Mac users)**
 
 ```bash
 java -version
@@ -365,6 +363,36 @@ sudo apt install maven -y
 sdk current java
 sdk use java 21-tem
 ```
+
+---
+
+### Issue 4: Odd warnings during `sudo apt update && sudo apt upgrade -y`
+
+*Symptom: you see messages like "Failed to get properties: Transport endpoint is not connected" or "Failed to connect to system scope bus via local transport: Connection refused."*
+
+These are harmless systemd/dbus warnings that occasionally appear on WSL during trigger processing. They don't indicate a failure — the update still completes successfully. No action needed.
+
+---
+
+### Issue 5: Maven install shows a very long or shrinking/growing time estimate
+
+*Symptom: `apt` shows something like "5 hours remaining" while installing Maven, or two different percentages at once.*
+
+This is normal — apt's time estimates are often inaccurate, especially early in a download on a fresh install with nothing cached yet. Two percentages (overall vs. per-file) at the same time is also normal, not an error. Just let it run.
+
+If the download speed itself looks genuinely stuck (very low KB/s for several minutes, not just a bad estimate): press `Ctrl+C`, then in PowerShell (Admin) run `wsl --shutdown`, wait about 10 seconds, reopen your Ubuntu terminal, and retry the install command.
+
+---
+
+### Issue 6: Want to see all available Java versions before installing
+
+*Symptom: you'd like to check other available JDK versions/vendors instead of just installing 21-tem directly.*
+
+Run:
+```bash
+sdk list java
+```
+This opens a scrollable list — press `q` to exit it and return to your terminal. This step is optional and not required to complete the install.
 
 ---
 
