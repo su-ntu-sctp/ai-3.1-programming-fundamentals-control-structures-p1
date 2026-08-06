@@ -2,9 +2,7 @@
 
 ## Overview
 
-Before attending the first lesson, please complete the installation and setup steps below. This ensures you have a working Java development environment ready to go.
-
----
+Complete this guide before class. It ensures you have a working Java development environment ready to go.
 
 ## Prerequisites
 
@@ -12,11 +10,19 @@ Before attending the first lesson, please complete the installation and setup st
 - VS Code installed
 - Internet connection for installations
 
+## Choose Your Path
+
+- **Windows users:** follow **PART A** below, start to finish.
+- **Mac users:** skip to **PART B**, start to finish.
+
+Each part is fully self-contained — you won't need to jump back and forth.
+
+---
 ---
 
-## Part 1: Installation of Development Environment (45 minutes)
+# PART A: WINDOWS SETUP
 
-### For Windows Users: Install WSL2
+### Install WSL2
 
 Windows users need to install WSL2 (Windows Subsystem for Linux) to follow this course.
 
@@ -27,7 +33,6 @@ Right-click Start menu → Windows PowerShell (Admin)
 *(On newer Windows 11 systems, you may see "Terminal (Admin)" instead — click that; it opens PowerShell by default.)*
 
 **Step 2: Install WSL**
-
 ```powershell
 wsl --install
 ```
@@ -41,7 +46,6 @@ After restart, Ubuntu will open automatically. Create a username and password.
 *(Your terminal may first show a path like `/mnt/c/Users/...` — that's normal and harmless; you'll move to your Linux home folder in the next section.)*
 
 **Step 5: Update packages**
-
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
@@ -50,356 +54,376 @@ sudo apt update && sudo apt upgrade -y
 
 **Video walkthrough:** [How to Install WSL2 on Windows](https://www.youtube.com/watch?v=eId6K8d0v6o)
 
-[![video](https://img.youtube.com/vi/eId6K8d0v6o/default.jpg)](https://www.youtube.com/watch?v=eId6K8d0v6o)
-
 ---
 
 > **📌 Which terminal do I use from here on?**
-> - **Windows users:** Now that WSL2 is installed, do **all** remaining commands in this guide — SDKMan, JDK, Maven, everything — inside your **Ubuntu (WSL) terminal**, not PowerShell or Command Prompt. PowerShell was only needed for the WSL install itself.
-> - **Mac users:** Use the built-in **Terminal** app for every command in this guide.
-> - This is different from Module 2, where you worked with VS Code directly on Windows/Mac with no WSL involved — WSL is a new piece for this module.
+> Now that WSL2 is installed, do **all** remaining commands inside your **Ubuntu (WSL) terminal**, not PowerShell.
 
 ---
 
-### For Windows Users: Connect VS Code to WSL
+### Connect VS Code to WSL
 
-Since Module 2 you've used VS Code directly on Windows (for React). WSL is new — by default, VS Code opens folders and terminals in Windows, **not** in your Ubuntu (WSL) environment. You need to connect the two, or none of the tools you're about to install (Java, Maven, SDKMan) will be visible to VS Code.
+**Step 1:** Open VS Code → Extensions (Ctrl+Shift+X) → search "WSL" → install the one by **Microsoft**
 
-**Step 1: Install the WSL extension**
-
-Open VS Code → Extensions icon (Ctrl+Shift+X) → search "WSL" → install the one published by **Microsoft**.
-
-**Step 2: Create your project folder inside WSL (not Windows)**
-
-Open your Ubuntu terminal (search "Ubuntu" in the Start menu) and run:
-
+**Step 2:** Open your Ubuntu terminal, run:
 ```bash
 mkdir -p ~/projects
 cd ~/projects
 ```
 
-This keeps your Java projects on the Linux filesystem, where they'll run faster and avoid path issues — rather than under `C:\Users\...`.
-
-**Step 3: Launch VS Code connected to WSL**
-
-From that same Ubuntu terminal:
-
+**Step 3:** Launch VS Code connected to WSL:
 ```bash
 code .
 ```
 
-The first time you run this, VS Code will install a small "VS Code Server" inside WSL — this is expected and only happens once.
-
-**Step 4: Confirm you're connected**
-
-Look at the **bottom-left corner** of the VS Code window. It should show a green box reading **"WSL: Ubuntu"**. If you see that, VS Code, its terminal, and everything you install going forward are all running inside WSL — not Windows.
-
-From now on, any terminal you open inside VS Code (`` Ctrl+` ``) will automatically be your WSL Ubuntu terminal.
+**Step 4:** Confirm the bottom-left corner shows a green **"WSL: Ubuntu"** box.
 
 ---
 
-### For Windows Users: Git Setup in WSL
-
-Configure Git in your WSL environment:
-
+### Git Setup in WSL
 ```bash
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
-
 **Reference:** https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git
-
----
-
-### For Mac Users: Git Setup
-
-Mac usually comes with Git pre-installed via Xcode Command Line Tools, but let's confirm and configure it.
-
-**Step 1: Check if Git is installed**
-
-```bash
-git --version
-```
-
-If Git isn't installed, macOS will prompt you to install the **Xcode Command Line Tools** — click **Install** and wait for it to finish, then run `git --version` again to confirm.
-
-**Step 2: Configure Git**
-
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-```
-
-**Optional — create a folder for your course work:** any location and name works fine on Mac (e.g. `~/projects`, `~/java-course`, `~/module3`) — just pick one you'll remember, so it's easy to find your work during class.
-
-```bash
-mkdir -p ~/projects
-cd ~/projects
-```
 
 ---
 
 ### Terminology
 
-**Java Development Kit (JDK)** - Toolkit which includes the Java compiler and runtime environment for developers to write code
+**JDK (Java Development Kit)** – the full toolkit: compiler + runtime. Installed by the developer.
 
-**Java Runtime Environment (JRE)** - Consists of JVM, core classes and supporting libraries. Required to run Java applications
+**JRE (Java Runtime Environment)** – runs Java apps. Included in the JDK.
 
-**Java Virtual Machine (JVM)** - A platform-independent virtual machine that runs Java bytecode. All Java programs are compiled into bytecode, which is then executed by the JVM
+**JVM (Java Virtual Machine)** – executes bytecode. Platform-independent.
 
 When you install JDK, JRE is included.
-
-**More info:** https://www.digitalocean.com/community/tutorials/difference-jdk-vs-jre-vs-jvm
 
 ---
 
 ### Install SDKMan
 
-SDKMan is a popular command line tool for managing multiple JDK versions on Unix-based systems (Linux and Mac).
-
-**Benefits:**
-- Install, manage and switch between multiple JDK versions easily
-- JDKs are installed locally, avoiding conflicts with system-wide installations
-- Update itself and all SDKs with a single command
-
-**Step 1: Install prerequisites (WSL/Ubuntu users only)**
-
+**Step 1:**
 ```bash
 sudo apt install zip unzip curl -y
 ```
 
-**Mac users:** Skip this step (curl is pre-installed)
-
-**Step 2: Install SDKMan (For WSL/Ubuntu and Mac users)**
-
+**Step 2:**
 ```bash
 curl -s "https://get.sdkman.io" | bash
 ```
 
-**Step 3: Initialize SDKMan (For WSL/Ubuntu and Mac users)**
-
+**Step 3:**
 ```bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 ```
 
-**Step 4: Verify installation (For WSL/Ubuntu and Mac users)**
-
+**Step 4:**
 ```bash
 sdk version
 ```
-
-You should see `SDKMAN!` followed by script and native version numbers.
-
-**Reference:** https://sdkman.io/
+You should see `SDKMAN!` with version numbers.
 
 ---
 
 ### Install JDK 21
 
-We will install **Eclipse Temurin JDK 21** — the current **LTS** release with long-term support until 2031.
-
-**Step 1: Install Java 21 (For WSL/Ubuntu and Mac users)**
-
+**Step 1:**
 ```bash
 sdk install java 21-tem
 ```
 
-This always installs the latest patch of Java 21. To install a specific patch version, find the exact identifier using `sdk list java` (see Troubleshooting Guide), e.g. `sdk install java 21.0.7-tem`.
-
-**Step 2: Verify installation (For WSL/Ubuntu and Mac users)**
-
+**Step 2:**
 ```bash
 java -version
 ```
-
-You should see `OpenJDK 21.x.x` — the exact patch number may differ.
-
-**Java SE Support Roadmap:** https://www.oracle.com/java/technologies/java-se-support-roadmap.html
-
----
-
-### Install Homebrew (Mac Users Only)
-
-Homebrew is macOS's package manager — you'll use it to install Maven. Skip this section if you already have it (check first with `brew --version`).
-
-**Step 1: Install Homebrew**
-
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-You may be prompted to install Xcode Command Line Tools first if you don't already have them — approve this if asked.
-
-**Step 2: Add Homebrew to your PATH (Apple Silicon Macs only — M1/M2/M3/M4)**
-
-After installation finishes, the terminal shows a "Next steps" block with two lines — run them:
-
-```bash
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-eval "$(/opt/homebrew/bin/brew shellenv)"
-```
-
-**Intel Macs:** Homebrew installs to `/usr/local` and is usually already on your PATH — no extra step needed.
-
-**Step 3: Verify installation**
-
-```bash
-brew --version
-```
-
-You should see a Homebrew version number.
+You should see `OpenJDK 21.x.x`.
 
 ---
 
 ### Install Maven
 
-Maven is a build automation tool used for Java projects.
-
-**For WSL/Ubuntu users:**
-
 ```bash
-sudo apt update
-sudo apt install maven -y
+sudo apt update && sudo apt install maven -y
 ```
 
-**For Mac users:**
-
-```bash
-brew install maven
-```
-
-**Verify installation:**
-
+**Verify:**
 ```bash
 mvn --version
 ```
-
 You should see `Apache Maven 3.x.x` with Java 21 listed.
 
 ---
 
-### JShell
-
-JShell is a REPL (Read-Eval-Print-Loop) tool for executing Java code interactively — useful for quickly testing snippets without creating a project.
-
+### JShell (optional)
 ```bash
 jshell
 ```
-
-```bash
+```
 jshell> System.out.println("Hello World");
-Hello World
 jshell> /exit
 ```
 
 ---
 
-### Install Extension Pack for Java
+### Install Extension Pack for Java (in VS Code)
 
 **Step 1:** Open VS Code
 
-**Step 2:** Click Extensions icon (Ctrl+Shift+X / Cmd+Shift+X)
+**Step 2:** Extensions icon (Ctrl+Shift+X) → search "Extension Pack for Java" → Install
 
-**Step 3:** Search for "Extension Pack for Java" and click Install
-
-**Link:** https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack
+*(If VS Code is already connected to WSL, it will show "Install in WSL: Ubuntu" instead of a plain "Install" button — click that version, it's correct.)*
 
 ---
 
-### Final Verification Checklist
-
-Run each command below in your terminal (WSL Ubuntu terminal for Windows, Terminal app for Mac). If every command produces the expected type of output, your setup is complete.
+### Final Verification Checklist (Windows)
 
 | Command | Expected output |
-| :--- | :--- |
+|---|---|
 | `java -version` | `OpenJDK 21.x.x` |
 | `javac -version` | `javac 21.x.x` |
 | `mvn --version` | `Apache Maven 3.x.x` with Java 21 listed |
 | `sdk version` | `SDKMAN!` with version numbers |
 | `git --version` | A Git version number |
-| `code .` (from your project folder) | VS Code opens — **Windows users:** bottom-left corner shows "WSL: Ubuntu" |
-
-If any command fails, check the Troubleshooting Guide below for that specific symptom before class.
+| `code .` | VS Code opens — bottom-left shows "WSL: Ubuntu" |
 
 ---
 
-✅ **If all the steps above completed without errors, your setup is done. You do not need to read anything below this point.**
+### Troubleshooting Guide (Windows)
 
----
+**Only consult this if something went wrong above.**
 
-## ⚠️ Troubleshooting Guide — Only If Something Went Wrong
-
-**Do not follow these steps as part of the normal setup process.** This section is a reference to consult *only if* you hit a specific error above. If your installation completed successfully, skip this entirely.
-
-<br>
-
-### Issue 1: `sdk` command not found
-
-*Symptom: after installing SDKMan, running `sdk version` gives "command not found."*
-
+**Issue 1: `sdk` command not found**
 ```bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 ```
-
 Or restart your terminal.
 
----
-
-### Issue 2: Permission denied when installing packages (WSL)
-
-*Symptom: installing Maven fails with a permission error.*
-
+**Issue 2: Permission denied when installing packages**
 ```bash
 sudo apt install maven -y
 ```
 
----
-
-### Issue 3: Java version mismatch
-
-*Symptom: `java -version` shows a different version than expected (e.g. an older system JDK instead of 21).*
-
+**Issue 3: Java version mismatch**
 ```bash
 sdk current java
 sdk use java 21-tem
 ```
 
----
+**Issue 4: Odd warnings during `apt update && upgrade`**
 
-### Issue 4: Odd warnings during `sudo apt update && sudo apt upgrade -y`
+*Symptom: "Failed to get properties: Transport endpoint is not connected" or "Failed to connect to system scope bus."* These are harmless systemd/dbus warnings on WSL. The update still completes successfully.
 
-*Symptom: you see messages like "Failed to get properties: Transport endpoint is not connected" or "Failed to connect to system scope bus via local transport: Connection refused."*
+**Issue 5: Maven install shows a very long or inconsistent time estimate**
 
-These are harmless systemd/dbus warnings that occasionally appear on WSL during trigger processing. They don't indicate a failure — the update still completes successfully. No action needed.
+*Symptom: apt shows "5 hours remaining," or two different percentages at once.* Normal — apt's time estimates are often inaccurate, especially on a fresh install. Just let it run. If the download speed itself is genuinely stuck (very low KB/s for several minutes): `Ctrl+C`, then in PowerShell (Admin) run `wsl --shutdown`, wait 10 seconds, reopen Ubuntu, and retry.
 
----
-
-### Issue 5: Maven install shows a very long or shrinking/growing time estimate
-
-*Symptom: `apt` shows something like "5 hours remaining" while installing Maven, or two different percentages at once.*
-
-This is normal — apt's time estimates are often inaccurate, especially early in a download on a fresh install with nothing cached yet. Two percentages (overall vs. per-file) at the same time is also normal, not an error. Just let it run.
-
-If the download speed itself looks genuinely stuck (very low KB/s for several minutes, not just a bad estimate): press `Ctrl+C`, then in PowerShell (Admin) run `wsl --shutdown`, wait about 10 seconds, reopen your Ubuntu terminal, and retry the install command.
-
----
-
-### Issue 6: Want to see all available Java versions before installing
-
-*Symptom: you'd like to check other available JDK versions/vendors instead of just installing 21-tem directly.*
-
-Run:
+**Issue 6: Want to see all available Java versions**
 ```bash
 sdk list java
 ```
-This opens a scrollable list — press `q` to exit it and return to your terminal. This step is optional and not required to complete the install.
+This opens a scrollable list — press `q` to exit. Optional, not required for the install.
+
+---
+---
+
+# PART B: MAC SETUP
+
+> **⚠️ Important — read before starting:** If your Mac is on an older macOS version (Ventura/13 or earlier), Homebrew may not have a ready-made version of Bash for your system, and will build it from source instead. This can make the "Install a Modern Bash" step below take **15-30+ minutes** instead of a couple of minutes. This is normal, not a sign of failure — just budget extra time and let it run. If possible, updating macOS beforehand will avoid this entirely.
+
+### Git Setup
+
+**Step 1: Check if Git is installed**
+```bash
+git --version
+```
+If not installed, macOS will prompt you to install the **Xcode Command Line Tools** — click Install, then run `git --version` again.
+
+**Step 2: Configure Git**
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+**Optional — create a folder for your course work:**
+```bash
+mkdir -p ~/projects
+cd ~/projects
+```
+Any name/location works — just pick one you'll remember.
 
 ---
 
-## Additional Resources
+### Terminology
 
-- [SDKMan Documentation](https://sdkman.io/)
+**JDK (Java Development Kit)** – the full toolkit: compiler + runtime. Installed by the developer.
+
+**JRE (Java Runtime Environment)** – runs Java apps. Included in the JDK.
+
+**JVM (Java Virtual Machine)** – executes bytecode. Platform-independent.
+
+When you install JDK, JRE is included.
 
 ---
 
-**End of Setup Guide**
+### Install Homebrew
+
+Homebrew is macOS's package manager. In this guide, its only job is installing a modern version of Bash (needed for SDKMan below) — Java and Maven come through SDKMan directly, not Homebrew.
+
+**Step 1: Install Homebrew**
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+You may see a warning that your macOS version isn't officially supported — this is safe to proceed past.
+
+**Step 2: Follow the "Next steps" it prints**
+
+After installing, Homebrew prints a **"Next steps"** block with 2-3 commands to add it to your PATH (usually involving `.zprofile`). **Copy and run exactly what it shows you** — this applies on every Mac, Intel or Apple Silicon, so don't skip it.
+
+**Step 3: Verify**
+```bash
+brew --version
+```
+
+---
+
+### Install a Modern Bash
+
+macOS ships with an old default Bash (3.2) that SDKMan cannot use. This step is **required**, not optional.
+
+**Step 1:**
+```bash
+brew install bash
+```
+*(On older macOS versions, this may compile from source and take 15-30+ minutes — this is expected, just let it run.)*
+
+**Step 2: Open a brand new Terminal window/tab** (important — so your updated PATH loads)
+
+**Step 3: Verify**
+```bash
+bash --version
+```
+You should see version 5.x, not 3.2.
+
+---
+
+### Install SDKMan
+
+```bash
+curl -s "https://get.sdkman.io" | bash
+```
+
+Then:
+```bash
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+
+Verify:
+```bash
+sdk version
+```
+You should see `SDKMAN!` with version numbers.
+
+---
+
+### Install JDK 21
+
+**Step 1:**
+```bash
+sdk install java 21-tem
+```
+
+**Step 2:**
+```bash
+java -version
+```
+You should see `OpenJDK 21.x.x`.
+
+---
+
+### Install Maven
+
+```bash
+sdk install maven
+```
+
+**Verify:**
+```bash
+mvn --version
+```
+You should see `Apache Maven 3.x.x` with Java 21 listed.
+
+---
+
+### JShell (optional)
+```bash
+jshell
+```
+```
+jshell> System.out.println("Hello World");
+jshell> /exit
+```
+
+---
+
+### Install Extension Pack for Java (in VS Code)
+
+**Step 1:** Open VS Code
+
+**Step 2:** Extensions icon (Cmd+Shift+X) → search "Extension Pack for Java" → Install
+
+---
+
+### Final Verification Checklist (Mac)
+
+| Command | Expected output |
+|---|---|
+| `java -version` | `OpenJDK 21.x.x` |
+| `javac -version` | `javac 21.x.x` |
+| `mvn --version` | `Apache Maven 3.x.x` with Java 21 listed |
+| `sdk version` | `SDKMAN!` with version numbers |
+| `bash --version` | Version 5.x |
+| `brew --version` | A Homebrew version number |
+| `git --version` | A Git version number |
+
+---
+
+### Troubleshooting Guide (Mac)
+
+**Only consult this if something went wrong above.**
+
+**Issue 1: "This macOS version is not supported" warning during any `brew install`**
+
+Safe to proceed (type `y`/Enter). It just means Homebrew doesn't have a ready-made binary for your OS and will build from source, which is slower but works fine.
+
+**Issue 2: `bash --version` still shows 3.2 after installing a newer one**
+
+Close and reopen your terminal completely (not just a new tab in an old session) — this reloads your PATH so it picks up the new Bash.
+
+**Issue 3: SDKMan install still says "Bash 4 or higher required"**
+
+You're likely in a terminal session opened before the Bash upgrade. Open a completely fresh terminal window and retry:
+```bash
+curl -s "https://get.sdkman.io" | bash
+```
+
+**Issue 4: Java version mismatch**
+```bash
+sdk current java
+sdk use java 21-tem
+```
+
+**Issue 5: A `brew install` step seems frozen with no output for a long time**
+
+Open a new terminal tab and run `top -o cpu` — look for process names like `cc1`, `clang`, `make`, or `cmake` using CPU. If you see activity, it's genuinely still compiling, not stuck — just let it continue. Press `q` to exit `top`.
+
+**Issue 6: Want to see all available Java versions**
+```bash
+sdk list java
+```
+This opens a scrollable list — press `q` to exit. Optional, not required for the install.
+
+**Issue 7: `brew install maven` fails with "A full installation of Xcode.app is required"**
+
+*Symptom: trying to install Maven via Homebrew instead of SDKMan triggers this error, asking for the full Xcode app (several GB) from the App Store.* This happens because Homebrew has no ready-made Maven for your macOS version and tries to build a dependency (`openjdk`) from source, which needs the full Xcode app, not just Command Line Tools. **Fix: don't use Homebrew for Maven at all** — use `sdk install maven` instead (see the Install Maven step above), which avoids this entirely.
