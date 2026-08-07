@@ -230,36 +230,6 @@ double doubleNum = 1.5;        // D suffix optional
 
 Create `DataTypesExplorer.java`. Declare variables of at least 5 different data types, print them, and include at least one explicit cast and one `parse` conversion from a String.
 
-**Example structure:**
-
-```java
-public class DataTypesExplorer {
-  public static void main(String[] args) {
-    String name = "Ada Lovelace";
-    char grade = 'A';
-    int age = 30;
-    double salary = 95000.50;
-    boolean isActive = true;
-    long companyId = 9876543210L;
-
-    // Explicit cast: double to int (decimal truncated)
-    int salaryInt = (int) salary;
-
-    // Parse: String to int
-    int parsedAge = Integer.parseInt("42");
-
-    System.out.println("Name: " + name);
-    System.out.println("Grade: " + grade);
-    System.out.println("Age: " + age);
-    System.out.println("Salary: " + salary);
-    System.out.println("Salary as int: " + salaryInt);
-    System.out.println("Active: " + isActive);
-    System.out.println("Company ID: " + companyId);
-    System.out.println("Parsed age: " + parsedAge);
-  }
-}
-```
-
 ---
 
 ## Part 5: Wrapper Classes, Boxing and Unboxing (15 minutes)
@@ -363,50 +333,6 @@ Create `ConsoleCalculator.java`. The program should:
 3. Perform the operation and print the result
 4. Handle division by zero with a friendly message
 
-**Example structure:**
-
-```java
-import java.util.Scanner;
-
-public class ConsoleCalculator {
-  public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
-
-    System.out.print("Enter first number: ");
-    double num1 = scanner.nextDouble();
-
-    System.out.print("Enter second number: ");
-    double num2 = scanner.nextDouble();
-
-    System.out.print("Enter operator (+, -, *, /): ");
-    String operator = scanner.next();
-
-    double result;
-
-    if (operator.equals("+")) {
-      result = num1 + num2;
-      System.out.println("Result: " + result);
-    } else if (operator.equals("-")) {
-      result = num1 - num2;
-      System.out.println("Result: " + result);
-    } else if (operator.equals("*")) {
-      result = num1 * num2;
-      System.out.println("Result: " + result);
-    } else if (operator.equals("/")) {
-      if (num2 == 0) {
-        System.out.println("Error: Cannot divide by zero.");
-      } else {
-        result = num1 / num2;
-        System.out.println("Result: " + result);
-      }
-    } else {
-      System.out.println("Invalid operator.");
-    }
-
-    scanner.close();
-  }
-}
-```
 
 ---
 
