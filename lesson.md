@@ -46,22 +46,57 @@ You'll hear the words **class** and **object** constantly from here on, so befor
 
 - A **class** is a blueprint — it defines what something looks like and what it can do.
 - An **object** is a real instance built from that blueprint, created using the `new` keyword.
+### Class and Object — A Quick Preview
+
+You'll hear the words **class** and **object** constantly from here on, so before writing any code, a quick anchor. We'll go deeper in Lesson 3.6 (Object-Oriented Programming).
+
+- A **class** is a blueprint — it describes what something *has* and what it *can do*.
+- An **object** is a real instance built from that blueprint, created using the `new` keyword.
 
 ```java
+// CLASS = the blueprint. It describes what a Car has and what a Car can do.
 public class Car {
-  void drive() {
-    System.out.println("Car is driving");
-  }
-}
 
-public class Main {
-  public static void main(String[] args) {
-    Car myCar = new Car();   // creating an object from the Car class
-    myCar.drive();
-  }
+    // ATTRIBUTES (also called fields, properties, or state)
+    // These describe what a Car HAS.
+    String brand;
+    String colour;
+    int speed;
+
+    // METHODS (also called behaviour)
+    // These describe what a Car can DO.
+    void drive() {
+        System.out.println(brand + " is driving at " + speed + " km/h");
+    }
+
+    void stop() {
+        System.out.println(brand + " has stopped");
+    }
 }
 ```
 
+Now we create a real object from that blueprint and give it values:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        // Create an OBJECT (a real car) from the Car blueprint, using 'new'
+        Car myCar = new Car();
+
+        // Assign values to the object's attributes
+        myCar.brand = "Toyota";
+        myCar.colour = "Red";
+        myCar.speed = 80;
+
+        // Call the object's methods (make it DO things)
+        myCar.drive();   // Toyota is driving at 80 km/h
+        myCar.stop();    // Toyota has stopped
+    }
+}
+```
+
+**Output:**
 `Car` is the **class** — the blueprint. `myCar` is the **object** — a real instance created from it. That's all you need for now — we'll go much deeper into classes and objects (constructors, fields, and more) in Lesson 3.6 (Object-Oriented Programming).
 
 ### Step 1: Create `Main.java`
