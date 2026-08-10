@@ -5,7 +5,7 @@
 
 ## Dependencies
 Refer to the following markdown file for the respective sections of the class:
-- [Setup Guide](./setup.md) — **complete before class** (WSL, JDK 21, SDKMan, Maven, VS Code Java extensions)
+- [Setup Guide](./Setup.md) — **complete before class** (WSL, JDK 21, SDKMan, Maven, VS Code Java extensions)
 - [Self Studies](./studies.md)
 - [Lesson](./lesson.md)
 - [Assignment](./assignment.md)
