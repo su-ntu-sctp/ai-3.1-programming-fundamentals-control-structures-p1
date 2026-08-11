@@ -496,9 +496,7 @@ System.out.println(fruit1 == fruit3);      // false — different objects in mem
 
 **Rule of thumb:** use `==` for primitives (`int`, `double`, `boolean`), and `.equals()` when comparing the contents of objects like `String`.
 
-```
 
----
 
 ### Logical / Conditional Operators
 
