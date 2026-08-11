@@ -371,7 +371,39 @@ System.out.println("a - b = " + (a - b));   // -10
 System.out.println("a * b = " + (a * b));   // 200
 System.out.println("a / b = " + (a / b));   // 0
 System.out.println("b % a = " + (b % a));   // 0
+
+
 ```
+### The `+` Operator: Addition vs Concatenation
+
+The `+` operator does **two jobs**: it **adds** numbers, but it **joins (concatenates)** when text is involved. Java reads left to right, and the moment a String is involved, `+` switches to joining.
+
+```java
+// Joining two pieces of text
+System.out.println("Hello" + "World");        // HelloWorld
+
+// Left to right: "The Sum is " + 10 becomes text, then + 20 joins as text
+System.out.println("The Sum is " + a + b);    // The Sum is 1020
+
+// Left to right: 10 + 20 are numbers, so they ADD first (30), then join the text
+System.out.println(a + b + " is the sum");    // 30 is the sum
+
+// Parentheses force the maths to happen first
+System.out.println("a - b = " + (a - b));     // a - b = -10
+
+```
+
+**Key idea:** the position matters because Java evaluates left to right.
+- In `"The Sum is " + a + b`, the text comes first, so everything after it is treated as text to join → `1020`.
+- In `a + b + " is the sum"`, the two numbers come first, so they add to `30`, and only then does the text join.
+- Use **parentheses** (like `(a - b)`) whenever you want the maths to happen before joining.
+
+**Note:** only `+` can join text. Operators like `-`, `*`, `/` are maths-only, so `"text" - a` would cause an error.
+
+
+
+
+
 
 ---
 
@@ -431,6 +463,39 @@ System.out.println("compoundAdd: " + compoundAdd);  // 18
 System.out.println("a == b: " + (a == b));  // false
 System.out.println("a != b: " + (a != b));  // true
 System.out.println("a < b: " + (a < b));    // true
+
+```
+
+### Comparing Objects: `==` vs `.equals()`
+
+Use `==` to compare **primitives**, but for **objects** (like `String`), use `.equals()` instead.
+
+- `==` checks whether two variables point to the **same object in memory**.
+- `.equals()` checks whether two objects have the **same content (value)**.
+
+```java
+// Relational operators on primitives — use ==
+System.out.println("a == b: " + (a == b));   // compares values, fine for primitives
+System.out.println("a != b: " + (a != b));
+System.out.println("a < b: "  + (a < b));
+
+// Comparing objects — use equals() to compare values
+String fruit1 = "apple";
+String fruit2 = "apple";
+String fruit3 = new String("apple");
+
+System.out.println(fruit1.equals(fruit3)); // true  — same text content
+System.out.println(fruit1 == fruit3);      // false — different objects in memory
+
+```
+
+**Why the difference?**
+- `fruit1` and `fruit2` share the same `"apple"` from Java's string pool (Java reuses identical text literals).
+- `fruit3 = new String("apple")` creates a **separate** object in memory, even though the text is the same.
+- So `.equals()` returns `true` (same content), but `==` returns `false` (different objects).
+
+**Rule of thumb:** use `==` for primitives (`int`, `double`, `boolean`), and `.equals()` when comparing the contents of objects like `String`.
+
 ```
 
 ---
