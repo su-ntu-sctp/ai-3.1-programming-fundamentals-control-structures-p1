@@ -42,12 +42,6 @@ When you install JDK, JRE is included.
 
 ### Class and Object — A Quick Preview
 
-You'll hear the words **class** and **object** constantly from here on, so before writing any code, a quick anchor:
-
-- A **class** is a blueprint — it defines what something looks like and what it can do.
-- An **object** is a real instance built from that blueprint, created using the `new` keyword.
-### Class and Object — A Quick Preview
-
 You'll hear the words **class** and **object** constantly from here on, so before writing any code, a quick anchor. We'll go deeper in Lesson 3.6 (Object-Oriented Programming).
 
 - A **class** is a blueprint — it describes what something *has* and what it *can do*.
