@@ -52,8 +52,6 @@ sudo apt update && sudo apt upgrade -y
 
 **Reference:** https://learn.microsoft.com/en-us/windows/wsl/install
 
-**Video walkthrough:** [How to Install WSL2 on Windows](https://www.youtube.com/watch?v=eId6K8d0v6o)
-
 ---
 
 > **📌 Which terminal do I use from here on?**
@@ -85,8 +83,6 @@ code .
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
-**Reference:** https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-git
-
 ---
 
 ### Terminology
